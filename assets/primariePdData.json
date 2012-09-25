@@ -1,0 +1,67 @@
+[
+	{ 
+		"year" : 2007,	
+		"candidate" : "Rosy Bindi", 
+		"votes" : 453067
+	},
+	{ 
+		"year" : 2007,	
+		"candidate" : "Enrico Letta", 
+		"votes" : 389271
+	},
+	{ 
+		"year" : 2007,	
+		"candidate" : "Walter Veltroni", 
+		"votes" : 2666750
+	},
+	{ 
+		"year" : 2007,	
+		"candidate" : "Mario Adinolfi", 
+		"votes" : 5906
+	},
+	{ 
+		"year" : 2007,	
+		"candidate" : "Pier Giorgio Gawronski", 
+		"votes" : 2376
+	},
+	{ 
+		"year" : 2009,	
+		"candidate" : "PierLuigi Bersani", 
+		"votes" : 1623239
+	},
+	{ 
+		"year" : 2009,	
+		"candidate" : "Dario Franceschini", 
+		"votes" : 1045123
+	},
+	{ 
+		"year" : 2009,	
+		"candidate" : "Dario Franceschini", 
+		"votes" : 1045123
+	},
+	{ 
+		"year" : 2009,	
+		"candidate" : "Ignazio Marino", 
+		"votes" : 380904
+	},
+	{ 
+		"year" : 2012,	
+		"candidate" : "Pierluigi Bersani", 
+		"votes" : 0
+	},
+	{ 
+		"year" : 2012,	
+		"candidate" : "Stefano Boeri", 
+		"votes" : 0
+	},
+	{ 
+		"year" : 2012,	
+		"candidate" : "Matteo Renzi", 
+		"votes" : 0
+	},
+	{ 
+		"year" : 2012,	
+		"candidate" : "Laura Puppato", 
+		"votes" : 0
+	}		    			    		    			    	    	 	    	    	    	    
+]
