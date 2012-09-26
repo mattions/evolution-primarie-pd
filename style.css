@@ -1,5 +1,31 @@
-#graph rect {
-   stroke: white;
-   fill: steelblue;
+#graph-circle text.votes {
+	fill: #FFFFFF;
+	font-weight: bold;
+	
 }
 
+.year-2009 {
+	color: #327B00;
+	stroke: #286100;
+   	fill: #327B00;
+}
+
+.year-2007 {
+	color: steelblue;
+   	stroke: navy;
+   	fill: steelblue;
+}
+
+.year-2009-text {
+	font-size: 20px;
+   	fill: #327B00;
+}
+
+.year-2007-text {
+	font-size: 20px;
+   	fill: steelblue;
+}
+
+#footer p {
+	text-align: center;
+}

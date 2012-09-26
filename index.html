@@ -12,8 +12,7 @@
 		<meta name="author" content="Michele Mattioni" />
 		<link href="assets/bootstrap_simplex.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
-		<script src="assets/d3.v2.js"></script>
-		
+		<script src="assets/d3.v2.js"></script>		
 	</head>
 
 	<body>
@@ -31,11 +30,23 @@
 			</header>
 
 			<div>
-				<p>Playing with D3js</p>
+				<p>In the following graphs the results of the candidates at the 
+					primary election ran by the Italian democratic party (PD) are confronted with a 
+					normalized scale, among the two elections for all the candidates.</p>
+			<h3>Results per candidates</h3>
+				<p>In <span class="year-2007">blue</span> are plotted the result for 
+					the <span class="year-2007">2007 primary election</span>, 
+					while in <span class="year-2009">green</span> are plotted the result 
+					for the	<span class="year-2009">2009 primary election</span>.</p>
 			</div>
-			<div id="graph"></div>
 			<!-- the javascript lives here, however it could be inserted in the head 
 				and a Jquery call could be used to be loaded when document is ready -->
+			<div id="graph-bar"></div>
+			
+			<h3>Cumulative votes per year</h3>
+			<p>This is to show the amount of total votes in each primary election. It's clear that the
+				second time less people have voted.</p>
+			<div id="graph-circle"></div>
 			<script src="graph_plotter.js"></script>
 			<footer>
 				<p>

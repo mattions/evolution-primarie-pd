@@ -26,13 +26,8 @@
 	},
 	{ 
 		"year" : 2009,	
-		"candidate" : "PierLuigi Bersani", 
+		"candidate" : "Pierluigi Bersani", 
 		"votes" : 1623239
-	},
-	{ 
-		"year" : 2009,	
-		"candidate" : "Dario Franceschini", 
-		"votes" : 1045123
 	},
 	{ 
 		"year" : 2009,	
@@ -43,25 +38,5 @@
 		"year" : 2009,	
 		"candidate" : "Ignazio Marino", 
 		"votes" : 380904
-	},
-	{ 
-		"year" : 2012,	
-		"candidate" : "Pierluigi Bersani", 
-		"votes" : 0
-	},
-	{ 
-		"year" : 2012,	
-		"candidate" : "Stefano Boeri", 
-		"votes" : 0
-	},
-	{ 
-		"year" : 2012,	
-		"candidate" : "Matteo Renzi", 
-		"votes" : 0
-	},
-	{ 
-		"year" : 2012,	
-		"candidate" : "Laura Puppato", 
-		"votes" : 0
 	}		    			    		    			    	    	 	    	    	    	    
 ]
