@@ -11,7 +11,6 @@
       this.height = 300;
       this.barWidth = 40;
       this.vis = d3.select(chart_id).append('svg:svg').attr('width', this.width).attr('height', this.height);
-      console.log("barGraph created");
     }
 
     BarGraph.prototype.setScale = function(xMinDomain, xMaxDomain, yMinDomain, yMaxDomain, xPadding, yPadding) {
@@ -27,7 +26,7 @@
 
     BarGraph.prototype.createBars = function() {
       var _this = this;
-      return this.vis.selectAll('rect').data(this.data).enter().append("svg:rect").attr("class", function(datum) {
+      return this.vis.selectAll('rect').data(this.data).enter().append("svg:rect").attr("fill-opacity", 0.0001).attr("class", function(datum) {
         return "year-" + datum.year;
       }).attr("x", function(datum, index) {
         return _this.xScale(index * _this.barWidth);
@@ -35,7 +34,13 @@
         return _this.height - _this.yPadding - _this.yScale(datum.votes);
       }).attr("width", this.barWidth).attr("height", function(datum) {
         return _this.yScale(datum.votes);
+      }).append("svg:title").text(function(datum) {
+        return datum.percent + "%";
       });
+    };
+
+    BarGraph.prototype.colorBar = function() {
+      return this.vis.selectAll('rect').transition().duration(3000).attr("fill-opacity", 1);
     };
 
     BarGraph.prototype.createText = function() {
@@ -61,7 +66,6 @@
       this.height = 300;
       this.circleSpace = 30;
       this.vis = d3.select(chart_id).append('svg:svg').attr('width', this.width).attr('height', this.height);
-      console.log("circleGraph created");
     }
 
     CircleGraph.prototype.setScale = function(xMinDomain, xMaxDomain, yMinDomain, yMaxDomain, xPadding, yPadding) {
@@ -75,10 +79,10 @@
       return this.yScale = d3.scale.linear().domain([this.yMinDomain, this.yMaxDomain]).range([0, this.height - this.yPadding]);
     };
 
+    CircleGraph.prototype.thousand = d3.format(",");
+
     CircleGraph.prototype.createCircle = function(meanVote) {
       var _this = this;
-      console.log("adding circle with");
-      console.log(this.data);
       return this.vis.selectAll('circle').data(this.data).enter().append("svg:circle").attr("class", function(datum) {
         return "year-" + datum.year;
       }).attr("cx", function(datum, index) {
@@ -103,9 +107,8 @@
 
     CircleGraph.prototype.createVotesText = function(meanValue) {
       var _this = this;
-      console.log("Creating the votes");
       return this.vis.selectAll("votes").data(this.data).enter().append("text").attr("class", "votes").text(function(datum) {
-        return datum.votes;
+        return _this.thousand(datum.votes);
       }).attr("text-anchor", "middle").attr("x", function(datum, index) {
         return _this.xScale(index * _this.circleSpace);
       }).attr("y", this.yScale(meanValue));
@@ -116,7 +119,7 @@
   })();
 
   d3.json("assets/primariePdData.json", function(data) {
-    var arrayYearVote, barGraph, circleGraph, d, datum, meanValue, textHeight, vote, votes, votesPerYear, votesTotal, xManDomain, xMaxDomain, xMinDomain, xPadding, yMaxDomain, yMaxdomain, yMinDomain, yPadding, year, years, _i, _j, _len, _len1;
+    var arrayYearVote, barGraph, circleGraph, d, datum, meanValue, textHeight, vote, votes, votesPerYear, votesTotal, xManDomain, xMaxDomain, xMinDomain, xPadding, yMaxDomain, yMaxdomain, yMinDomain, yPadding, year, years, _i, _len;
     votes = (function() {
       var _i, _len, _results;
       _results = [];
@@ -126,18 +129,15 @@
       }
       return _results;
     })();
-    for (_i = 0, _len = data.length; _i < _len; _i++) {
-      d = data[_i];
-      console.log(d["year"], d["candidate"], d["votes"]);
-    }
     textHeight = 20;
     barGraph = new BarGraph(data, "#graph-bar");
     barGraph.setScale(xMinDomain = 0, xManDomain = barGraph.barWidth * barGraph.data.length, yMinDomain = 0, yMaxdomain = d3.max(votes), xPadding = 0, yPadding = textHeight);
     barGraph.createBars();
     barGraph.createText();
+    barGraph.colorBar();
     votesPerYear = [];
-    for (_j = 0, _len1 = data.length; _j < _len1; _j++) {
-      datum = data[_j];
+    for (_i = 0, _len = data.length; _i < _len; _i++) {
+      datum = data[_i];
       year = datum.year;
       if (votesPerYear.hasOwnProperty(year)) {
         votesPerYear[year] += datum.votes;
@@ -162,7 +162,6 @@
     }
     circleGraph = new CircleGraph(arrayYearVote, "#graph-circle");
     circleGraph.setScale(xMinDomain = 0, xMaxDomain = circleGraph.data.length * circleGraph.circleSpace, yMinDomain = 0, yMaxDomain = 3 * d3.max(votesTotal), xPadding = 0, yPadding = 0);
-    console.log(arrayYearVote.length);
     meanValue = 1.5 * d3.mean(votesTotal);
     circleGraph.createCircle(meanValue);
     circleGraph.createVotesText(meanValue);

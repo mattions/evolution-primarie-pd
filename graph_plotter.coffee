@@ -12,7 +12,7 @@ class BarGraph
         .append('svg:svg')
         .attr('width', @width)
         .attr('height', @height)
-    console.log("barGraph created")
+    
   
   # we incorporate this variable in the class defination to get to them later on   
   setScale: (@xMinDomain, @xMaxDomain, @yMinDomain, @yMaxDomain, @xPadding, @yPadding)->
@@ -24,11 +24,20 @@ class BarGraph
           .data(@data)
           .enter()
           .append("svg:rect")
+          .attr("fill-opacity", 0.0001)
           .attr("class", (datum) => "year-" + datum.year)
           .attr("x", (datum, index) => @xScale(index * @barWidth))
           .attr("y", (datum) => @height - @yPadding - @yScale(datum.votes))
           .attr("width", @barWidth)
           .attr("height",(datum) => @yScale(datum.votes))
+          .append("svg:title")
+          .text((datum) => datum.percent + "%")
+
+  colorBar: ->
+    @vis.selectAll('rect')
+        .transition()
+        .duration(3000)
+        .attr("fill-opacity", 1)
                    
   createText: ->
     @vis.selectAll("text")
@@ -52,16 +61,15 @@ class CircleGraph
         .append('svg:svg')
         .attr('width', @width)
         .attr('height', @height)
-    console.log("circleGraph created")
        
   # we incorporate this variable in the class defination to get to them later on   
   setScale: (@xMinDomain, @xMaxDomain, @yMinDomain, @yMaxDomain, @xPadding, @yPadding)->
     @xScale  = d3.scale.linear().domain([@xMinDomain, @xMaxDomain]).range [100, @width - @xPadding]
     @yScale  = d3.scale.linear().domain([@yMinDomain, @yMaxDomain]).range [0, @height - @yPadding]
+    
+  thousand: d3.format(",")
   
   createCircle: (meanVote)->
-    console.log("adding circle with")
-    console.log(@data)
     @vis.selectAll('circle')
         .data(@data)
         .enter()
@@ -69,7 +77,7 @@ class CircleGraph
         .attr("class", (datum) => "year-" + datum.year)
         .attr("cx", (datum, index) => @xScale(index * @circleSpace))
         .attr("cy", @yScale(meanVote))
-        .attr("r", (datum) => @yScale(datum.votes))
+        .attr("r", (datum) => (@yScale(datum.votes)))
         
   createYearsText: ->
     @vis.selectAll(".legend")
@@ -84,13 +92,12 @@ class CircleGraph
         .attr("y", (datum) => @height)
         
   createVotesText: (meanValue) ->
-    console.log("Creating the votes")
     @vis.selectAll("votes")
         .data(@data)
         .enter()
         .append("text")
         .attr("class", "votes")
-        .text((datum) =>  datum.votes)
+        .text((datum) =>  @thousand(datum.votes))
         .attr("text-anchor", "middle")
         .attr("x", (datum, index) => @xScale(index * @circleSpace))
         .attr("y", @yScale(meanValue))
@@ -100,7 +107,7 @@ class CircleGraph
 d3.json "assets/primariePdData.json", (data) =>
   # Getting the domains right
   votes = ( d["votes"] for d in data )
-  console.log(d["year"], d["candidate"], d["votes"]) for d in data
+  #console.log(d["year"], d["candidate"], d["votes"]) for d in data
   textHeight = 20
   barGraph = new BarGraph(data, "#graph-bar")
   
@@ -110,6 +117,7 @@ d3.json "assets/primariePdData.json", (data) =>
     
   barGraph.createBars()
   barGraph.createText()
+  barGraph.colorBar()
   
   # data processing
   votesPerYear = []
@@ -133,7 +141,7 @@ d3.json "assets/primariePdData.json", (data) =>
                        yMinDomain=0, yMaxDomain=3*d3.max(votesTotal),
                        xPadding=0, yPadding=0 
                       )
-  console.log(arrayYearVote.length)
+  
   meanValue = 1.5 * d3.mean(votesTotal)                    
   circleGraph.createCircle(meanValue)
   circleGraph.createVotesText(meanValue)
