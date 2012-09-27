@@ -28,23 +28,33 @@
 			<header>
 				<h1>Primarie pd</h1>
 			</header>
+			
 			<p>I wanted to have a go with <a href="http://d3js.org/">d3.js</a> and I had to choose some 
-				dataset to play with, so I decided to get the data of the Italian primary election results 
-				of <a href="http://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2007">2007</a> and 
-				<a href="http://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2009">2009</a></p>
-			<div>
-				<p>In the following graphs the results of all the candidates are confronted using a normalized scale.</p>
-			<h3>Results per candidates</h3>
+				dataset to play with, so I decided to get the results of the first two elections of the 
+				Italina Democratic Party: <a href="http://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2007">2007</a> 
+				and <a href="http://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2009">2009</a>.
+				The data are from wikipedia and I have rewritten them in a <a href="assets/primariePdData.json">json format</a>.</p>
+			
+			<p>I have created two graphs:
+				<ul>
+					<li><a href="#results_per_candidates">the first one</a> shows all the candidates 
+					confronted in a normalized scale for both the elections</li>
+					<li><a href="#cumulative">the second one</a> shows the cumulative amount of votes reached 
+						in each election</li>	
+				</ul> 
+			</p>
+				
+			<h3><a name="results_per_candidates">Results per candidates</a></h3>
 				<p>In <span class="year-2007">blue</span> are plotted the result for 
 					the <span class="year-2007">2007 primary election</span>, 
 					while in <span class="year-2009">green</span> are plotted the result 
 					for the	<span class="year-2009">2009 primary election</span>.</p>
-			</div>
+			
 			<!-- the javascript lives here, however it could be inserted in the head 
 				and a Jquery call could be used to be loaded when document is ready -->
 			<div id="graph-bar"></div>
 			
-			<h3>Cumulative votes per year</h3>
+			<h3><a name="cumulative">Cumulative votes per year</a></h3>
 			<p>This is to show the amount of total votes in each primary election. It's clear that the
 				second time less people have voted.</p>
 			<div id="graph-circle"></div>
@@ -58,7 +68,7 @@
 								Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
 					</p>
 					<p class="copy">
-						&copy; 2012 Copyright  by Michele Mattioni
+						&copy; 2012 Copyright  by <a href="http://michelemattioni.me">Michele Mattioni</a>
 					</p>
 			</footer>
 		</div>

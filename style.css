@@ -35,3 +35,16 @@ footer {
 	color: grey;
 	text-align: center;
 }
+
+h3 a {
+	color: #555; 
+}
+
+.copy a {
+	color: grey;	 
+	text-decoration: underline;
+}
+
+.copy a:hover {
+	color: red;
+}
