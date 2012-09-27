@@ -26,6 +26,12 @@
    	fill: steelblue;
 }
 
-footer p {
+footer {
+	padding-top: 60px;
+	
+}
+
+.copy {
+	color: grey;
 	text-align: center;
 }
