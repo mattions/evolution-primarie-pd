@@ -1,1 +1,69 @@
-My GitHub Page
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>Primarie PD evolution</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Michele Mattioni" />
+		<link href="assets/bootstrap_simplex.css" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
+		<script src="assets/d3.v2.js"></script>		
+	</head>
+
+	<body>
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <a class="brand" href="#">Evoluzione Primarie PD</a>
+		    <ul class="nav">
+		      <li class="active"><a href="#">Home</a></li>
+		    </ul>
+		  </div>
+		</div>
+		<div class="container">
+			<header>
+				<h1>Primarie pd</h1>
+			</header>
+			<p>I wanted to have a go with <a href="http://d3js.org/">d3.js</a> and I had to choose some 
+				dataset to play with, so I decided to get the data of the Italian primary election results 
+				of <a href="http://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2007">2007</a> and 
+				<a href="http://it.wikipedia.org/wiki/Elezioni_primarie_del_Partito_Democratico_del_2009">2009</a></p>
+			<div>
+				<p>In the following graphs the results of all the candidates are confronted using a normalized scale.</p>
+			<h3>Results per candidates</h3>
+				<p>In <span class="year-2007">blue</span> are plotted the result for 
+					the <span class="year-2007">2007 primary election</span>, 
+					while in <span class="year-2009">green</span> are plotted the result 
+					for the	<span class="year-2009">2009 primary election</span>.</p>
+			</div>
+			<!-- the javascript lives here, however it could be inserted in the head 
+				and a Jquery call could be used to be loaded when document is ready -->
+			<div id="graph-bar"></div>
+			
+			<h3>Cumulative votes per year</h3>
+			<p>This is to show the amount of total votes in each primary election. It's clear that the
+				second time less people have voted.</p>
+			<div id="graph-circle"></div>
+			<script src="graph_plotter.js"></script>
+			<footer>
+					<p>
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_GB">
+							<img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+							
+							This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_GB">
+								Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+					</p>
+					<p class="copy">
+						&copy; 2012 Copyright  by Michele Mattioni
+					</p>
+			</footer>
+		</div>
+		<a href="https://github.com/you">
+			<img style="position: absolute; top: 0; right: 0; border: 0;" 
+			src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+	</body>
+</html>
